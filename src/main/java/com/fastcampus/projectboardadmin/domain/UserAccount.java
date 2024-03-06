@@ -7,12 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.management.relation.Role;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Getter
 @ToString(callSuper = true)
@@ -33,14 +31,18 @@ public class UserAccount extends AuditingFields {
     @Column(nullable = false)
     private Set<RoleType> roleTypes = new LinkedHashSet<>();
 
+
     @Setter @Column(length = 100) private String email;
     @Setter @Column(length = 100) private String nickname;
     @Setter private String memo;
+
+
     protected UserAccount() {}
+
     private UserAccount(String userId, String userPassword, Set<RoleType> roleTypes, String email, String nickname, String memo, String createdBy) {
         this.userId = userId;
         this.userPassword = userPassword;
-        this.roleTypes= roleTypes;
+        this.roleTypes = roleTypes;
         this.email = email;
         this.nickname = nickname;
         this.memo = memo;
@@ -56,15 +58,15 @@ public class UserAccount extends AuditingFields {
         return new UserAccount(userId, userPassword, roleTypes, email, nickname, memo, createdBy);
     }
 
-    public void addRoleType(RoleType roleType){
+    public void addRoleType(RoleType roleType) {
         this.getRoleTypes().add(roleType);
     }
 
-    public void addRoleTypes(Collection<RoleType> roleTypes){
+    public void addRoleTypes(Collection<RoleType> roleTypes) {
         this.getRoleTypes().addAll(roleTypes);
     }
 
-    public void removeRoleType(RoleType roleType){
+    public void removeRoleType(RoleType roleType) {
         this.getRoleTypes().remove(roleType);
     }
 
@@ -74,8 +76,10 @@ public class UserAccount extends AuditingFields {
         if (!(o instanceof UserAccount that)) return false;
         return this.getUserId() != null && this.getUserId().equals(that.getUserId());
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(this.getUserId());
     }
+
 }

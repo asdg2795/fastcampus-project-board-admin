@@ -19,13 +19,13 @@ class ArticleManagementControllerTest {
 
     private final MockMvc mvc;
 
-    public ArticleManagementControllerTest(@Autowired MockMvc mvc){
+    public ArticleManagementControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
     @DisplayName("[view][GET] 게시글 관리 페이지 - 정상 호출")
     @Test
-    void givenNothing_whenRequestingArticleManagementView_thenReturnsArticleManagementView() throws Exception{
+    void givenNothing_whenRequestingArticleManagementView_thenReturnsArticleManagementView() throws Exception {
         // Given
 
         // When & Then
@@ -33,7 +33,5 @@ class ArticleManagementControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("management/articles"));
-
-
     }
 }
