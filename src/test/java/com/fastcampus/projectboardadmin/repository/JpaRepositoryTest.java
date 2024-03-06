@@ -1,6 +1,5 @@
 package com.fastcampus.projectboardadmin.repository;
 
-
 import com.fastcampus.projectboardadmin.domain.UserAccount;
 import com.fastcampus.projectboardadmin.domain.constant.RoleType;
 import org.junit.jupiter.api.DisplayName;
@@ -30,10 +29,9 @@ class JpaRepositoryTest {
         this.userAccountRepository = userAccountRepository;
     }
 
-
     @DisplayName("회원 정보 select 테스트")
     @Test
-    void givenUserAccounts_whenSelecting_thenWorksFine(){
+    void givenUserAccounts_whenSelecting_thenWorksFine() {
         // Given
 
         // When
@@ -47,7 +45,7 @@ class JpaRepositoryTest {
 
     @DisplayName("회원 정보 insert 테스트")
     @Test
-    void givenUserAccount_whenInserting_thenWorksFine(){
+    void givenUserAccount_whenInserting_thenWorksFine() {
         // Given
         long previousCount = userAccountRepository.count();
         UserAccount userAccount = UserAccount.of("test", "pw", Set.of(RoleType.DEVELOPER), null, null, null);
@@ -56,7 +54,7 @@ class JpaRepositoryTest {
         userAccountRepository.save(userAccount);
 
         // Then
-        assertThat(userAccountRepository.count()).isEqualTo(previousCount+1);
+        assertThat(userAccountRepository.count()).isEqualTo(previousCount + 1);
     }
 
     @DisplayName("회원 정보 update 테스트")
@@ -90,7 +88,7 @@ class JpaRepositoryTest {
         // Then
         assertThat(userAccountRepository.count()).isEqualTo(previousCount - 1);
     }
-    
+
 
     @EnableJpaAuditing
     @TestConfiguration
@@ -100,4 +98,5 @@ class JpaRepositoryTest {
             return () -> Optional.of("uno");
         }
     }
+
 }
