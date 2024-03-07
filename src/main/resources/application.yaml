@@ -5,6 +5,7 @@ logging:
     com.fastcampus.projectboardadmin: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.springframework.web.client.RestTemplate: debug
 
 server.port: 8081
 
