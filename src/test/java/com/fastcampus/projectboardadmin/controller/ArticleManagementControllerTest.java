@@ -20,7 +20,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 @DisplayName("컨트롤러 - 게시글 관리")
 @Import(SecurityConfig.class)
 @WebMvcTest(ArticleManagementController.class)
@@ -60,7 +59,6 @@ class ArticleManagementControllerTest {
                 .andExpect(jsonPath("$.userAccount.nickname").value(articleDto.userAccount().nickname()));
         then(articleManagementService).should().getArticle(articleId);
     }
-
     @DisplayName("[view][POST] 게시글 삭제 - 정상 호출")
     @Test
     void givenArticleId_whenRequestingDeletion_thenRedirectsToArticleManagementView() throws Exception {
@@ -93,8 +91,6 @@ class ArticleManagementControllerTest {
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "unoTest",
-                "pw",
-                Set.of(RoleType.ADMIN),
                 "uno-test@email.com",
                 "uno-test",
                 "test memo"
