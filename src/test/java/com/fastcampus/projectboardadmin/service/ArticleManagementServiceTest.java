@@ -38,10 +38,12 @@ class ArticleManagementServiceTest {
         public RealApiTest(ArticleManagementService sut) {
             this.sut = sut;
         }
+
         @DisplayName("게시글 API를 호출하면, 게시글을 가져온다.")
         @Test
-        void given_when_then() {
+        void givenNothing_whenCallingArticleApi_thenReturnsArticleList() {
             // Given
+
             // When
             List<ArticleDto> result = sut.getArticles();
             // Then
@@ -93,7 +95,6 @@ class ArticleManagementServiceTest {
                     .hasFieldOrPropertyWithValue("userAccount.nickname", expectedArticle.userAccount().nickname());
             server.verify();
         }
-
         @DisplayName("게시글 ID와 함께 게시글 API을 호출하면, 게시글을 가져온다.")
         @Test
         void givenArticleId_whenCallingArticleApi_thenReturnsArticle() throws Exception {
@@ -116,7 +117,6 @@ class ArticleManagementServiceTest {
                     .hasFieldOrPropertyWithValue("userAccount.nickname", expectedArticle.userAccount().nickname());
             server.verify();
         }
-
         @DisplayName("게시글 ID와 함께 게시글 삭제 API을 호출하면, 게시글을 삭제한다.")
         @Test
         void givenArticleId_whenCallingDeleteArticleApi_thenDeletesArticle() throws Exception {
