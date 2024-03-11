@@ -1,13 +1,11 @@
 package com.fastcampus.projectboardadmin.dto.security;
 
 import com.fastcampus.projectboardadmin.domain.constant.RoleType;
-import com.fastcampus.projectboardadmin.dto.UserAccountDto;
-import lombok.Getter;
+import com.fastcampus.projectboardadmin.dto.AdminAccountDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -21,11 +19,9 @@ public record BoardAdminPrincipal(
         String memo,
         Map<String, Object> oAuth2Attributes
 ) implements UserDetails, OAuth2User {
-
     public static BoardAdminPrincipal of(String username, String password, Set<RoleType> roleTypes, String email, String nickname, String memo) {
         return BoardAdminPrincipal.of(username, password, roleTypes, email, nickname, memo, Map.of());
     }
-
     public static BoardAdminPrincipal of(String username, String password, Set<RoleType> roleTypes, String email, String nickname, String memo, Map<String, Object> oAuth2Attributes) {
         return new BoardAdminPrincipal(
                 username,
@@ -41,7 +37,8 @@ public record BoardAdminPrincipal(
                 oAuth2Attributes
         );
     }
-    public static BoardAdminPrincipal from(UserAccountDto dto) {
+
+    public static BoardAdminPrincipal from(AdminAccountDto dto) {
         return BoardAdminPrincipal.of(
                 dto.userId(),
                 dto.userPassword(),
@@ -51,8 +48,9 @@ public record BoardAdminPrincipal(
                 dto.memo()
         );
     }
-    public UserAccountDto toDto() {
-        return UserAccountDto.of(
+
+    public AdminAccountDto toDto() {
+        return AdminAccountDto.of(
                 username,
                 password,
                 authorities.stream()
