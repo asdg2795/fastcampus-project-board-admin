@@ -27,7 +27,8 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @ActiveProfiles("test")
 @DisplayName("비즈니스 로직 - 댓글 관리")
 class ArticleCommentManagementServiceTest {
-   // @Disabled("실제 API 호출 결과 관찰용이므로 평상시엔 비활성화")
+
+    @Disabled("실제 API 호출 결과 관찰용이므로 평상시엔 비활성화")
     @DisplayName("실제 API 호출 테스트")
     @SpringBootTest
     @Nested
@@ -37,6 +38,7 @@ class ArticleCommentManagementServiceTest {
         public RealApiTest(ArticleCommentManagementService sut) {
             this.sut = sut;
         }
+        
         @DisplayName("댓글 API를 호출하면, 댓글을 가져온다.")
         @Test
         void givenNothing_whenCallingCommentApi_thenReturnsCommentList() {
@@ -48,6 +50,7 @@ class ArticleCommentManagementServiceTest {
             assertThat(result).isNotNull();
         }
     }
+
     @DisplayName("API mocking 테스트")
     @EnableConfigurationProperties(ProjectProperties.class)
     @AutoConfigureWebClient(registerRestTemplate = true)
