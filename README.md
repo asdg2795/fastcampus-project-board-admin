@@ -3,7 +3,7 @@
 게시판 서비스의 관리 도구를 개발해보는 프로젝트입니다. 2022녀 6월 기준 가장 최신의 스프링 부트와 관련 기술들, 자바 17 기능들, 개발 도구들을 경험할 수 있도록 만들어졌습니다.
 
 # 개발 환경
- - Intellij IDEA Ultimate
+ - Intellij IDEA Ultimate 2023.3.2
  - Java 17
  - Gradle 7.4.1
  - Spring Boot 3.2.2
